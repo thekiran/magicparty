@@ -1,0 +1,23 @@
+@font-face {
+    
+    font-family: 'KurriIslandCapsPERSONAL-Bold';
+    
+    src: url("../fonts/KurriIslandCapsPERSONAL-Bold.ttf");
+    
+}
+
+@font-face {
+    
+    font-family: 'AesteticoFormal-Bold';
+    
+    src: url('../fonts/AesteticoFormal-Bold.ttf');
+    
+}
+
+@font-face {
+    
+    font-family: 'AesteticoFormal-Regular';
+    
+    src: url('../fonts/AesteticoFormal-Regular.ttf');
+    
+}
