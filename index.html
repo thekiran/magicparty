@@ -2115,7 +2115,7 @@
 
         window.onload = function() {
 
-            loadCSS("assets/bundles/css/fonts.css")
+            // loadCSS("assets/bundles/css/fonts.css")
             loadCSS("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap")
 
 
@@ -2169,6 +2169,9 @@
             const TriggerObserver = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
+
+                        loadCSS("assets/bundles/css/fonts.css")
+
                         loadScripts("https://assets.calendly.com/assets/external/widget.js","calendly")
                         tr.style.display = 'none'
 
@@ -2192,6 +2195,8 @@
                     return
 
                 } else {
+                    
+                    loadCSS("assets/bundles/css/fonts.css")
                     
                     loadScripts("https://assets.calendly.com/assets/external/widget.js","calendly")
                     tr.style.display = 'none'
