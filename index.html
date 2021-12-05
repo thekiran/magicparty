@@ -152,10 +152,12 @@
 
     <div class="hero-area" id="home_section">
 
-        <video autoplay="true" playsInline="true" preload="true" loop="true" autoplay muted loop playsinline id="myVideo">
+        <video autoplay="true" playsInline="true" preload="true" loop="true" autoplay muted loop playsinline id="myVideo" src="assets/video/hero-bg-mob.mp4" data-src="assets/video/hero-bg.mp4">
 
-            <source src="assets/video/hero-bg-mob.mp4" type="video/mp4">
-
+            
+            <!-- <source src="assets/video/hero-bg.mp4" type="video/mp4" media="min-width: 768px"> -->
+            
+            <!-- <source src="assets/video/hero-bg-mob.mp4" type="video/mp4"> -->
         </video>
 
         <div class="container">
@@ -2095,7 +2097,7 @@
 
     <script>
 
-        document.getElementById('myVideo').play();
+        // document.getElementById('myVideo').play();
 
         /*$('#bookNowForm').on('submit', function(e){
 
@@ -2104,6 +2106,35 @@
           e.preventDefault();
 
         });*/
+            // Trigger for Video
+            const tr = document.querySelector('#myVideo')
+
+
+            const TriggerObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+
+                        // console.log(entry)
+                        // console.log(window.innerWidth)
+
+                        if(window.innerWidth > 768){
+
+                            const video = entry.target;
+                            video.src = video.dataset.src;
+                        
+                        }
+
+                        TriggerObserver.unobserve(tr);
+                    }
+                });
+            });
+
+            TriggerObserver.observe(tr)
+
+
+
+
+
 
         function loadScripts(src, id){
                 const script = document.createElement('script')
