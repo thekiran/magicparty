@@ -75,6 +75,7 @@
 				
 
 			// jQuery for page scrolling feature - requires jQuery Easing plugin ---- Need to include Plugings.js
+			
 			$(function() {
 				$('.mainmenu li a, .bookBtn').on('click', function(event) {
 					var $anchor = $(this);
@@ -82,10 +83,16 @@
 					$('html, body').stop().animate({
 						scrollTop: $($anchor.attr('href')).offset().top - headerH + "px"
 					}, 600, 'easeInSine');
+
 					event.preventDefault();
 				});
 			});
+
+
+
 	});
     jQuery(window).load(function(){
     });
 }(jQuery));	
+
+

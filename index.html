@@ -114,7 +114,8 @@
 
                             <div class="header-btn">
 
-                                <a href="#bookSection" class="common-btn btn-red bookBtn book_One">BOOK NOW</a>
+                                <!-- class="common-btn btn-red bookBtn book_One" -->
+                                <a href="#bookSection" class="common-btn btn-red book_One bookBtn">BOOK NOW</a>
 
                             </div>
 
@@ -256,7 +257,7 @@
 
                                 <div class="celebrate-left">
 
-                                    <img class="lazy" data-src="assets/img/c-1.png" alt="">
+                                    <img src="assets/img/c-1.png" alt="">
 
                                 </div>
 
@@ -266,7 +267,7 @@
 
                                 <div class="celebrate-right">
 
-                                    <img class="lazy" data-src="assets/img/c-2.png" alt="">
+                                    <img src="assets/img/c-2.png" alt="">
 
                                 </div>
 
@@ -924,7 +925,7 @@
 
                     <div class="package-warp package-two">
 
-                        <img class="lazy" data-src="assets/img/package-2.svg" alt="">
+                        <img src="assets/img/package-2.svg" alt="">
 
                     </div>
 
@@ -938,7 +939,7 @@
 
                     <div class="package-left">
 
-                        <img class="lazy" data-src="assets/img/book-2.svg" alt="">
+                        <img src="assets/img/book-2.svg" alt="">
 
                     </div>
 
@@ -948,7 +949,7 @@
 
                     <div class="package-right">
 
-                        <img class="lazy" data-src="assets/img/MagicParty.svg" alt="">
+                        <img src="assets/img/MagicParty.svg" alt="">
 
                     </div>
 
@@ -1674,7 +1675,7 @@
 
     <!-- Schedule Area Start  -->
 
-    <div class="schedule-area">
+    <div class="schedule-area" >
 
         <div class="container">
 
@@ -1728,7 +1729,7 @@
 
     <!-- About Area Start  -->
 
-    <div class="about-area">
+    <div class="about-area" >
 
         <div class="about-banner-res">
 
@@ -2097,6 +2098,7 @@
 
     <script>
 
+
         // document.getElementById('myVideo').play();
 
         /*$('#bookNowForm').on('submit', function(e){
@@ -2164,24 +2166,37 @@
 
 
 
+
+
             // Lazy Loading Images
             const lazyloadImages = document.querySelectorAll(".lazy");
+            var lastTimeout;
 
             const imageObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                const image = entry.target;
-                image.src = image.dataset.src;
-                image.classList.remove("lazy");
-                imageObserver.unobserve(image);
+                    
+                    if (lastTimeout) clearTimeout(lastTimeout)
+                   
+                    const image = entry.target;
+                   
+                    lastTimeout = setTimeout(function() {
+                   
+                        image.src = image.dataset.src 
+                        image.classList.remove("lazy");
+                        imageObserver.unobserve(image);
+                   
+                    }, 500);
+                
                 }
             });
-            });
+            },{threshold: 1.0});
 
-            lazyloadImages.forEach(function(image) {
-            imageObserver.observe(image);
-            });
 
+                lazyloadImages.forEach(function(image) {
+                    imageObserver.observe(image);
+                });
+                
 
             // Lazy Loading Video
             const lazyloadVideo = document.querySelectorAll(".lazy-v");
@@ -2192,7 +2207,8 @@
                 if (entry.isIntersecting) {
                 const v = entry.target;
 
-                v.src = v.dataset.src;
+                    v.src = v.dataset.src;
+
                 
                 VideoObserver.unobserve(v);
                 }
